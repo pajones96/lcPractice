@@ -1,13 +1,17 @@
 class Solution {
     public int romanToInt(String s) {
         
+        //sum is gonna be the int we return
         int sum = 0;
+        //wonky little trick for getting around pesky out of bounds errors
         s = s + " ";
         
+        //iterate through the loop
         for (int i = 0; i < s.length(); i++){
             
             char num = s.charAt(i);
             
+            //switch statement checks the current digit and in some cases the next one to determine what to add to sum
             switch(num){
                 case 'I':
                     if (s.charAt(i+1) == 'X'){
@@ -58,9 +62,11 @@ class Solution {
                     sum += 1000;
                     break;
                 case ' ':
+                    //And here's the sort of escape clause that handles the " " concatenated to the end of s
                     break;
             }
         }
+        //numbers numbers numbers
         return sum;
     }
 }
