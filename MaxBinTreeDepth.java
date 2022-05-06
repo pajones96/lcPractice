@@ -14,22 +14,25 @@
  * }
  */
 class Solution {
-    public int maxDepth(TreeNode root) {
-        
-    int max = 1;
-    int depth = 1;
-    
-    public int maxDepth(TreeNode root) {
-        
-        if(root.left != null){
-            depth++;
-            maxDepth(root.left);
-        } else if (root.right != null){
-            depth++;
-            maxDepth(root.right);
-        } else {
-            if(depth > max)
-                max = depth;
-        }
-    }
+	
+	public int maxDepth(TreeNode root) {
+
+		if (root==null) {//check if empty tree
+			return 0;
+		}
+
+		int left=0;//max left tree depth 
+		int right =0;//max right tree depth
+
+		if(root.left!=null) {
+			left = maxDepth(root.left);//calculate left subtree depth
+		}
+
+		if(root.right!=null) {
+			right = maxDepth(root.right);//calculate right subtree depth
+		}
+
+		int max = (left > right) ? left : right;//check the max depth
+		return (max+1);
+	}
 }
